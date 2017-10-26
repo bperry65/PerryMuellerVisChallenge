@@ -1,0 +1,128 @@
+# INITIALIZATION PARAMETERS ########################
+
+! Name
+Simulation :		isotropic turbulence
+Data type : 		2 scalar slab mixing
+
+# 256 x 256 x 256 ##########################
+! Parameters
+Domain size :		6.28318531
+nx :			256
+
+! Velocity spectrum
+Fluctuations :		10
+Spectrum form :		PP 
+Energetic scale :	0.686
+
+############################################
+! Scalar spectrum
+ks/ko :			4.0
+kc/ks :			4.0
+ks/ko A:		8
+ks/ko B:		8
+Interface grid points:	1
+Smoothing method :    	erf
+Fraction A :		0.6
+Fraction B :		0.2
+
+! Files
+Init data file :	data.J4
+Init config file :	config
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+##########################################################
+#                                                        #
+#                   RUNNING PARAMETERS                   #
+#                                                        #
+##########################################################
+
+Forcing coefficient :	2.620
+Initial TKE : 	    	150
+
+! Files
+Configuration file :	config
+Data file to read :	data.1
+Data file to write :	data.2
+Data frequency :	2.5E-2
+Data overwrite: 	.true.
+
+! data.IJP.0.new contains all initialized scalars incl premixed, UVWP from ../premixing/data.3_5.000E-01
+! 0 -> 1 : test run
+
+! Partitioning
+Processors along X :	8
+Processors along Y :	8
+Processors along Z :	8
+OpenMP threads :        1
+
+! Chemistry - Properties
+Chemistry model :	none
+Density :               1
+Viscosity :             0.025
+Diffusivity :           0.03571429
+Temperature :		300
+Pressure :		1.0133e5
+
+! Subgrid Scale model
+Use SGS model :		.false.
+SGS averaging : 	Germano
+
+! Time advancement
+Timestep size :		0.05e-3
+CFL number :		0.5
+Subiterations :		2
+Implicit directions :	xyz
+
+! End of simulation
+Maximum iterations :	1000000
+Maximum time :		1.0
+Maximum wall time :	23.9
+
+! Schemes
+Velocity conv scheme :	2
+Velocity visc scheme :	2
+Scalar scheme :		weno3
+
+! Pressure
+Pressure solver :	bicgstab
+Pressure precond :	tridiag
+!Pressure scaling :	volume
+Pressure cvg :		1.E-10
+Pressure iterations :	1
+Pressure fft: 	    	.true.
+
+! Output
+Output type :		scalarPDF
+Output frequency :	1e-2
+Joint scalar PDF variables  : ZMIXAI1 ZMIXBI1
+      	     	 	      ZMIXAI2 ZMIXBI2
+      	     	 	      ZMIXAI4 ZMIXBI4
+      	     	 	      ZMIXAI5 ZMIXBI5
+      	     	 	      ZMIXAI6 ZMIXBI6
+      	     	 	      ZMIXAJ3 ZMIXBJ3
+      	     	 	      ZMIXAJ4 ZMIXBJ4
+      	     	 	      ZMIXAP1 ZMIXBP1
+      	     	 	      ZMIXAP2 ZMIXBP2
+      	     	 	      ZMIXAP3 ZMIXBP3
+      	     	 	      ZMIXAP4 ZMIXBP4
+      	     	 	      ZMIXAP5 ZMIXBP5
+Single scalar PDF variables : ZMIXAI1 ZMIXBI1
+      	     	 	      ZMIXAI2 ZMIXBI2
+      	     	 	      ZMIXAI4 ZMIXBI4
+      	     	 	      ZMIXAI5 ZMIXBI5
+      	     	 	      ZMIXAI6 ZMIXBI6
+      	     	 	      ZMIXAJ3 ZMIXBJ3
+      	     	 	      ZMIXAJ4 ZMIXBJ4
+      	     	 	      ZMIXAP1 ZMIXBP1
+      	     	 	      ZMIXAP2 ZMIXBP2
+      	     	 	      ZMIXAP3 ZMIXBP3
+      	     	 	      ZMIXAP4 ZMIXBP4
+      	     	 	      ZMIXAP5 ZMIXBP5
+Number of bins 		    : 512
+
+! Statistics
+!Statistics type :        3D
+!Statistics locations x: all
+!Statistics frequency :  0.01
